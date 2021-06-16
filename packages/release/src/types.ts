@@ -1,3 +1,6 @@
+/**
+ * lerna.json数据结构
+ */
 export interface LernaInfo {
   version?: string;
   npmClient?: string;
@@ -5,9 +8,17 @@ export interface LernaInfo {
   ignoreChanges?: string[];
 }
 
+/**
+ * 发布的模式
+ */
 export type Mode = 'lerna' | 'single';
 
-export interface ReleaseConfig {
+/**
+ * 配置参数
+ */
+export interface Options {
+  /** 工作的目录 */
+  cwd?: string;
   /** 是否跳过 Git 状态检查 */
   skipGitStatusCheck?: boolean;
   /** 是否跳过编译 */
@@ -20,6 +31,14 @@ export interface ReleaseConfig {
   buildCommand?: string;
   /** 指定提交的信息 */
   commitMessage?: string;
+  /** 仅发布，lerna模式有效 */
+  publishOnly?: boolean;
+  /** 排除私有的包，lerna模式有效 */
+  excludePrivate?: boolean;
+  /**  */
+  scope?: string[];
+  /**  */
+  ignore?: string[];
   /** npm push --tag **** */
   tag?: string;
 }

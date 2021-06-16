@@ -1,23 +1,20 @@
 {
   "name": "@walrus/release",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
   "repository": "git@github.com:walrusjs/release.git",
   "author": "wangxingkang <wang_xingkang@qq.com>",
   "license": "MIT",
-  "bin": {
-    "release": "./lib/cli.js"
-  },
   "files": [
     "lib"
   ],
   "scripts": {
-    "commit": "commit",
-    "build": "rimraf lib && tsc -p tsconfig.build.json",
-    "release": "script-run ./src/cli.ts"
+    "build": "rimraf lib && tsc -p tsconfig.build.json"
   },
   "dependencies": {
+    "@lerna/filter-packages": "^4.0.0",
+    "@lerna/package": "^4.0.0",
     "@pansy/types": "0.2.0",
     "@walrus/cli-utils": "1.1.1",
     "semver": "7.3.5"
