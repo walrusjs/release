@@ -1,13 +1,13 @@
 {
   "name": "@walrus/root",
   "private": true,
-  "version": "1.0.0",
-  "main": "index.js",
   "repository": "git@github.com:walrusjs/release.git",
   "author": "wangxingkang <wang_xingkang@qq.com>",
   "license": "MIT",
   "scripts": {
-
+    "commit": "commit",
+    "build": "lerna run build --stream",
+    "release": "script-run ./packages/cli/src/index.ts --skip-git-status-check"
   },
   "devDependencies": {
     "@types/semver": "^7.3.6",

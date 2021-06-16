@@ -1,14 +1,21 @@
 {
   "name": "@walrus/release-cli",
-  "version": "1.0.0",
-  "main": "index.js",
+  "version": "0.1.0",
+  "main": "./lib/index.js",
   "license": "MIT",
   "bin": {
-    "release": "./lib/cli.js"
+    "release": "./lib/index.js"
   },
   "files": [
     "lib"
   ],
+  "scripts": {
+    "build": "rimraf lib && tsc -p tsconfig.build.json"
+  },
+  "dependencies": {
+    "@walrus/cli-utils": "^1.1.1",
+    "@walrus/release": "^0.1.0"
+  },
   "publishConfig": {
     "registry": "https://registry.npmjs.org",
     "access": "public"
