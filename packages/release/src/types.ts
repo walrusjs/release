@@ -1,3 +1,12 @@
+export interface LernaInfo {
+  version?: string;
+  npmClient?: string;
+  useWorkspaces?: boolean;
+  ignoreChanges?: string[];
+}
+
+export type Mode = 'lerna' | 'single';
+
 export interface ReleaseConfig {
   /** 是否跳过 Git 状态检查 */
   skipGitStatusCheck?: boolean;

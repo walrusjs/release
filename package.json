@@ -1,25 +1,23 @@
 {
-  "name": "@walrus/release",
+  "name": "@walrus/root",
+  "private": true,
   "version": "1.0.0",
   "main": "index.js",
   "repository": "git@github.com:walrusjs/release.git",
   "author": "wangxingkang <wang_xingkang@qq.com>",
   "license": "MIT",
   "scripts": {
-    "commit": "commit",
-    "release": "script-run ./src/cli.ts"
-  },
-  "dependencies": {
-    "@pansy/types": "^0.2.0",
-    "@walrus/cli-utils": "^1.1.1"
+
   },
   "devDependencies": {
-    "@walrus/commit": "^1.1.0",
-    "@walrus/script-run": "^1.1.0",
-    "typescript": "^4.2.3"
+    "@types/semver": "^7.3.6",
+    "@walrus/commit": "^1.2.1",
+    "@walrus/script-run": "^1.2.0",
+    "rimraf": "^3.0.2",
+    "lerna": "^4.0.0",
+    "typescript": "^4.3.2"
   },
-  "publishConfig": {
-    "registry": "https://registry.npmjs.org",
-    "access": "public"
-  }
+  "workspaces": [
+    "packages/*"
+  ]
 }
