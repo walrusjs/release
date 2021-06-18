@@ -3,7 +3,6 @@ import semver from 'semver';
 import {
   exec,
   logStep,
-  lernaCli,
   getPackages,
   confirmVersion,
   getCommitMessage,
@@ -12,6 +11,8 @@ import {
   printErrorAndExit
 } from './utils';
 import type { Options } from './types';
+
+export const lernaCli = require.resolve('lerna/cli');
 
 export async function lernaUnity(
   currentVersion: string,

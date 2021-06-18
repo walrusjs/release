@@ -103,4 +103,3 @@ export { exec } from './exec';
 export { getPackages } from './getPackages';
 export { getNextVersion } from './getNextVersion';
 export { getLernaUpdated } from './getLernaUpdated';
-export const lernaCli = require.resolve('lerna/cli');
