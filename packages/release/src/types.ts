@@ -41,12 +41,15 @@ export interface Options {
   publishOnly?: boolean;
   /** 排除私有的包，lerna模式有效 */
   excludePrivate?: boolean;
+  /** 是否选择版本，lerna模式有效 */
   selectVersion?: boolean;
-  conventionalGraduate?: any;
-  conventionalPrerelease?: any;
-  /**  */
+  /** 将预发布版本的软件包升级为稳定版本，lerna模式有效 */
+  conventionalGraduate?: string[];
+  /** 将当前更改发布为预发布版本，lerna模式有效 */
+  conventionalPrerelease?: string[];
+  /** 仅包含与给定 glob 匹配的包 */
   scope?: string[];
-  /**  */
+  /** 排除名称与给定 glob 匹配的包 */
   ignore?: string[];
   /** npm push --tag **** */
   tag?: string;

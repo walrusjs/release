@@ -7,7 +7,7 @@
   "scripts": {
     "commit": "commit",
     "build": "lerna run build --stream",
-    "release": "script-run ./packages/cli/src/index.ts"
+    "release": "script-run ./packages/cli/src/index.ts --commit-message '🔖 chore(release): publish'"
   },
   "devDependencies": {
     "@types/semver": "7.3.6",

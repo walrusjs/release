@@ -8,6 +8,10 @@ const cli = cac(`commit`);
 cli
   .command('[...entries]')
   .option(
+    '--cwd',
+    `[cwd] 指定工作目录`
+  )
+  .option(
     '--skip-git-status-check',
     `[boolean] 是否跳过 git 状态检查`,
     {
@@ -43,6 +47,17 @@ cli
     }
   )
   .option(
+    '--commit-message [message]',
+    `[string] 指定提交信息。`,
+    {
+      default: '🔖 chore(release): publish'
+    }
+  )
+  .option(
+    '--publish-only',
+    `[boolean] 仅发布`
+  )
+  .option(
     '--exclude-private',
     `[boolean] 排除私有的包`,
     {
@@ -50,12 +65,27 @@ cli
     }
   )
   .option(
+    '--select-version',
+    `[boolean] 是否选择版本`,
+  )
+  .option(
+    '--conventional-graduate [graduate]',
+    `[string] 将预发布版本的软件包升级为稳定版本`,
+  )
+  .example('--conventional-prerelease package-2,package-4')
+  .option(
+    '--conventional-prerelease [prerelease]',
+    `[string] 将当前更改发布为预发布版本`,
+  )
+  .example('--conventional-prerelease')
+  .option(
     '--scope [scope]',
     `[string] 仅包含与给定 glob 匹配的包。`,
     {
       default: []
     }
   )
+  .example('--scope @walrus/*')
   .option(
     '--ignore [ignore]',
     `[string] 排除名称与给定 glob 匹配的包。`,
@@ -63,13 +93,7 @@ cli
       default: []
     }
   )
-  .option(
-    '--commit-message [message]',
-    `[string] 指定提交信息。`,
-    {
-      default: '🔖 chore(release): publish %v'
-    }
-  )
+  .example('--ignore @test/example1 --ignore @test/example2')
   .option(`--tag`, `指定发布Tag`)
   .action((entries: string[], opts: any = {}) => {
     const {
