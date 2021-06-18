@@ -21,10 +21,9 @@ export async function release(opts: Options, pkg?: PackageJson) {
   // 获取当前的版本
   let currentVersion = '';
 
-  // 添加默认提交信息
-  if (!opts.commitMessage) {
-    opts.commitMessage = 'chore(release): publish';
-  }
+  // 添加默认值
+  opts.buildCommand = opts.buildCommand ?? 'build';
+  opts.commitMessage = opts.commitMessage ?? '🔖 chore(release): publish %v';
 
   // 获取发布模式
   let mode: Mode = 'single';

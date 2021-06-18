@@ -4,7 +4,6 @@ import {
   packageExists,
   isNextVersion,
   getLernaUpdated,
-  getCommitMessage,
   printErrorAndExit
 } from './utils';
 import { execa, chalk, inquirer } from '@walrus/cli-utils';
@@ -35,7 +34,7 @@ export async function lernaIndependent(
     /** 执行项目编译 */
     if (!opts.skipBuild) {
       logStep('build');
-      await execa('npm', ['run', opts.buildCommand ?? 'build']);
+      await execa('npm', ['run', opts.buildCommand as string]);
     } else {
       logStep('build is skipped, since --skip-build is supplied');
     }
