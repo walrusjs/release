@@ -80,7 +80,11 @@ export async function release(opts: Options, pkg?: PackageJson) {
   }
 
   /** lerna 同版本发布 */
-  await lernaUnity();
+  await lernaUnity(
+    currentVersion,
+    cwd,
+    opts
+  );
 }
 
 export default release;
