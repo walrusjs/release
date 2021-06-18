@@ -78,7 +78,7 @@ export async function lernaIndependent(
       versionArguments.push('--no-private');
     }
 
-    execa.sync(
+    await execa(
       lernaCli,
       versionArguments
         .concat(conventionalGraduate)
