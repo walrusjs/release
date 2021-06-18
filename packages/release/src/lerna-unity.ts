@@ -1,7 +1,10 @@
 import { execa, chalk } from '@walrus/cli-utils';
 import semver from 'semver';
 import {
+  exec,
   logStep,
+  lernaCli,
+  getPackages,
   confirmVersion,
   getCommitMessage,
   getNextVersion,
@@ -63,6 +66,8 @@ export async function lernaUnity(
       '--no-push',
     ];
 
+    await exec(lernaCli, versionArgs);
+
     // Commit
     const commitMessage = getCommitMessage(opts.commitMessage as string, nextVersion);
     logStep(`git commit with ${chalk.blue(commitMessage)}`);
@@ -71,7 +76,21 @@ export async function lernaUnity(
     // Git Tag
     logStep(`git tag v${nextVersion}`);
     await execa('git', ['tag', `v${nextVersion}`]);
-
   }
 
+  // Publish
+  const pkgs = opts.publishOnly
+    ?
+      getPackages(cwd, {
+        scope: opts.scope,
+        ignore: opts.ignore,
+        showPrivate: !opts.excludePrivate
+      })
+    : updated;
+
+  const names = pkgs.reduce((prev: string, pkg: any) => {
+    return prev + `${pkg.name}, `;
+  }, '')
+
+  logStep(`publish packages: ${chalk.blue(names)}`);
 }
