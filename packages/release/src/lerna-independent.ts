@@ -67,7 +67,7 @@ export async function lernaIndependent(
       'version',
       '--exact',
       '--message',
-      `${opts.commitMessage as string}`,
+      `'${opts.commitMessage as string}'`,
     ];
 
     if (!opts.selectVersion) {
@@ -83,9 +83,6 @@ export async function lernaIndependent(
       versionArguments
         .concat(conventionalGraduate)
         .concat(conventionalPrerelease),
-      {
-        shell: false,
-      },
     );
   }
 
