@@ -40,6 +40,14 @@ export async function singleRelease(
     }
   }
 
+  /** 执行项目编译 */
+  if (!opts.skipBuild) {
+    logStep('build');
+    await execa('npm', ['run', opts.buildCommand ?? 'build']);
+  } else {
+    logStep('build is skipped, since --skip-build is supplied');
+  }
+
   /** 获取下一个需要发布的版本 */
   const nextVersion = await getNextVersion(currentVersion);
 

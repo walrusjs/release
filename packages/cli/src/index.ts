@@ -63,6 +63,13 @@ cli
       default: []
     }
   )
+  .option(
+    '--commit-message [message]',
+    `[string] 指定提交信息。`,
+    {
+      default: '🔖 chore(release): publish %v'
+    }
+  )
   .option(`--tag`, `指定发布Tag`)
   .action((entries: string[], opts: any = {}) => {
     const {
@@ -81,7 +88,11 @@ cli
       opts.ignore = [opts.ignore];
     }
 
-    release(Object.assign({}, data, opts));
+    release(Object.assign({}, data, opts))
+      .catch((err) => {
+        console.error(err);
+        process.exit(1);
+      });
   })
 
 cli.help();

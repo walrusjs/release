@@ -19,7 +19,12 @@ export async function release(opts: Options, pkg?: PackageJson) {
   // 获取当前工作目录的package.json
   let pkgInfo: PackageJson = pkg ?? require(`${cwd}/package.json`);
   // 获取当前的版本
-  let currentVersion = ''
+  let currentVersion = '';
+
+  // 添加默认提交信息
+  if (!opts.commitMessage) {
+    opts.commitMessage = 'chore(release): publish';
+  }
 
   // 获取发布模式
   let mode: Mode = 'single';
@@ -51,14 +56,6 @@ export async function release(opts: Options, pkg?: PackageJson) {
     }
   } else {
     logStep('npm registryre check is skipped, since --skip-publish is supplied');
-  }
-
-  /** 执行项目编译 */
-  if (!opts.skipBuild) {
-    logStep('build');
-    await execa('npm', ['run', opts.buildCommand ?? 'build']);
-  } else {
-    logStep('build is skipped, since --skip-build is supplied');
   }
 
   /** 单项目发布 */

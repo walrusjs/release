@@ -1,7 +1,6 @@
 import fs from 'fs';
 import path from 'path';
-import template from 'lodash/template';
-import { chalk, inquirer } from '@walrus/cli-utils';
+import { chalk, inquirer, execa } from '@walrus/cli-utils';
 import { LernaInfo } from '../types';
 
 /**
@@ -65,10 +64,41 @@ export async function confirmVersion(version: string) {
  * @param version
  * @returns
  */
-export function getCommitMessage(temp: string, version: string = '') {
-  const compiled = template(temp);
-  return compiled({ version }) + version ? `` : `release version`;
+export function getCommitMessage(temp: string, version: string = 'publish') {
+  if (temp.includes(`%s`)) {
+    return temp.replace(`%s`, version);
+  }
+
+  if (temp.includes(`%v`)) {
+    return temp.replace(`%v`, `v${version}`);
+  }
+
+  return temp;
 }
 
+/**
+ * 是否是预发布版本
+ * @param version
+ * @returns
+ */
+export function isNextVersion(version: string): boolean {
+  return (
+    version.includes('-rc.') ||
+    version.includes('-beta.') ||
+    version.includes('-alpha.')
+  );
+};
+
+/**
+ * 检测指定包的版本是否已经存在
+ * @param param0
+ * @returns
+ */
+export function packageExists({ name, version }: { name: string, version: string}): boolean {
+  const { stdout } = execa.sync('npm', ['info', `${name}@${version}`]);
+  return stdout.length > 0;
+}
+
+export { getPackages } from './getPackages';
 export { getNextVersion } from './getNextVersion';
 export { getLernaUpdated } from './getLernaUpdated';

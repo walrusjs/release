@@ -8,6 +8,12 @@ export interface LernaInfo {
   ignoreChanges?: string[];
 }
 
+export interface FilterPackageOptions {
+  scope?: string[];
+  ignore?: string[];
+  showPrivate?: boolean;
+}
+
 /**
  * 发布的模式
  */
@@ -35,6 +41,9 @@ export interface Options {
   publishOnly?: boolean;
   /** 排除私有的包，lerna模式有效 */
   excludePrivate?: boolean;
+  selectVersion?: boolean;
+  conventionalGraduate?: any;
+  conventionalPrerelease?: any;
   /**  */
   scope?: string[];
   /**  */
