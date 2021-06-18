@@ -4,11 +4,11 @@ import { chalk, inquirer, execa } from '@walrus/cli-utils';
 import { LernaInfo } from '../types';
 
 /**
- *
+ * 输出日志
  * @param name
  */
 export function logStep(name: string) {
-  console.log(`${chalk.gray('>> Release:')} ${chalk.magenta.bold(name)}`);
+  console.log(`${chalk.gray('>> release:')} ${chalk.magenta.bold(name)}`);
 }
 
 /**

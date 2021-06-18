@@ -18,8 +18,6 @@ export async function release(opts: Options, pkg?: PackageJson) {
   const cwd = opts.cwd ?? process.cwd();
   // 获取当前工作目录的package.json
   let pkgInfo: PackageJson = pkg ?? require(`${cwd}/package.json`);
-  // 获取当前的版本
-  let currentVersion = '';
 
   // 添加默认值
   opts.buildCommand = opts.buildCommand ?? 'build';
@@ -59,19 +57,11 @@ export async function release(opts: Options, pkg?: PackageJson) {
 
   /** 单项目发布 */
   if (mode === 'single') {
-    currentVersion = pkgInfo.version as string;
-    await singleRelease(
-      currentVersion,
-      {
-        ...opts,
-        cwd
-      },
-      pkgInfo
-    );
+    await singleRelease(cwd, opts, pkgInfo);
     return;
   }
 
-  currentVersion = resolveLerna(cwd).version ?? 'independent';
+  const currentVersion = resolveLerna(cwd).version ?? 'independent';
 
   /** lerna 独立版本发布 */
   if (currentVersion === 'independent') {

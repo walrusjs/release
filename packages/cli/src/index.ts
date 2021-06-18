@@ -48,10 +48,7 @@ cli
   )
   .option(
     '--commit-message [message]',
-    `[string] 指定提交信息。`,
-    {
-      default: '🔖 chore(release): publish'
-    }
+    `[string] 指定提交信息。`
   )
   .option(
     '--publish-only',

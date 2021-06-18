@@ -3,20 +3,29 @@ import inquirer from 'inquirer';
 
 export const bumps = ['patch', 'minor', 'major', 'prerelease'];
 
+export const nexts = ['rc', 'beta', 'alpha'];
+
 export async function getNextVersion(currentVersion: string) {
   const versions: Record<string, string> = {};
-  bumps.forEach((b) => {
-    versions[b] = semver.inc(currentVersion, b as ReleaseType) as string;
+  bumps.forEach((bump) => {
+    versions[bump] = semver.inc(currentVersion, bump as ReleaseType) as string;
   });
 
-  const bumpChoices = bumps.map((b) => ({ name: `${b} (${versions[b]})`, value: b }));
+  nexts.forEach((next) => {
+    versions[next] = semver.inc(currentVersion, 'prerelease', next) as string;
+  });
+
+  const choices = Object.keys(versions).map((b) => ({
+    name: `${b} (${versions[b]})`,
+    value: b
+  }));
 
   const { bump, customVersion } = await inquirer.prompt([
     {
       name: 'bump',
       message: 'Select release type:',
       type: 'list',
-      choices: [...bumpChoices, { name: 'custom', value: 'custom' }]
+      choices: [...choices, { name: 'custom', value: 'custom' }]
     },
     {
       name: 'customVersion',

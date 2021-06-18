@@ -13,10 +13,12 @@ import {
 } from './utils';
 
 export async function singleRelease(
-  currentVersion: string,
+  cwd: string,
   opts: Options,
   pkg: PackageJson,
 ) {
+  const currentVersion = pkg.version as string;
+
   /** 不合法检查 */
   if (!opts.skipPublish) {
     if (pkg.private) {
