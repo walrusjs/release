@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.3.0](https://github.com/walrusjs/release/compare/@walrus/release-cli@0.2.0...@walrus/release-cli@0.3.0) (2021-06-18)
+
+
+### Features
+
+* **cli:** 添加多个配置项 ([4e5ef4a](https://github.com/walrusjs/release/commit/4e5ef4ac8c4b2475b2071759623ad926df5ae0d0))
+
+
+
+
+
 # 0.2.0 (2021-06-18)
 
 

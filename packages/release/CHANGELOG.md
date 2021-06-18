@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.3.0](https://github.com/walrusjs/release/compare/@walrus/release@0.2.0...@walrus/release@0.3.0) (2021-06-18)
+
+
+### Features
+
+* **cli:** 添加多个配置项 ([4e5ef4a](https://github.com/walrusjs/release/commit/4e5ef4ac8c4b2475b2071759623ad926df5ae0d0))
+* **release:** lerna共同版本部分代码 ([b7d99dc](https://github.com/walrusjs/release/commit/b7d99dcbe42d430706508ec0d8f4ab2be4fbd44c))
+* **release:** 代码优化 ([518fc29](https://github.com/walrusjs/release/commit/518fc293d5f9441ba39bb4207307f74cab045e10))
+* **release:** 代码优化 ([9d22729](https://github.com/walrusjs/release/commit/9d227292b496a582c2053cea7e770edf115ab0b7))
+* **release:** 修复编译报错 ([514da47](https://github.com/walrusjs/release/commit/514da4727b787eba840a3bbfa00ffd7bbc38fc97))
+
+
+
+
+
 # 0.2.0 (2021-06-18)
 
 
