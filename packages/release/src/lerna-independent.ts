@@ -67,7 +67,7 @@ export async function lernaIndependent(
       'version',
       '--exact',
       '--message',
-      `'${opts.commitMessage as string}'`,
+      `${opts.commitMessage as string}`,
     ];
 
     if (!opts.selectVersion) {
