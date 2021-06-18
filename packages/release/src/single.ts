@@ -70,7 +70,7 @@ export async function singleRelease(
   writeFileSync(pkgPath, JSON.stringify(rootPkg, null, 2) + '\n', 'utf-8');
 
   /** 提交代码 */
-  const commitMessage = getCommitMessage(opts.commitMessage ?? 'update version', nextVersion);
+  const commitMessage = getCommitMessage(opts.commitMessage as string, nextVersion);
   logStep(`git commit with ${chalk.blue(commitMessage)}`);
   await execa('git', ['commit', '--all', '--message', commitMessage]);
 
