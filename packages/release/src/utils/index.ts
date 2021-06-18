@@ -99,6 +99,7 @@ export function packageExists({ name, version }: { name: string, version: string
   return stdout.length > 0;
 }
 
+export { exec } from './exec';
 export { getPackages } from './getPackages';
 export { getNextVersion } from './getNextVersion';
 export { getLernaUpdated } from './getLernaUpdated';

@@ -1,4 +1,5 @@
 import {
+  exec,
   logStep,
   getPackages,
   packageExists,
@@ -78,11 +79,14 @@ export async function lernaIndependent(
       versionArguments.push('--no-private');
     }
 
-    await execa(
+    await exec(
       lernaCli,
       versionArguments
         .concat(conventionalGraduate)
         .concat(conventionalPrerelease),
+      {
+        shell: false,
+      },
     );
   }
 
