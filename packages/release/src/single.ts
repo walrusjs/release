@@ -63,7 +63,7 @@ export async function singleRelease(
   const result = await confirmVersion(nextVersion);
   if (!result) return;
 
-  const pkgPath = join(opts.cwd as string, 'package.json');
+  const pkgPath = join(cwd, 'package.json');
 
   /** 修改package.json版本 */
   logStep('sync version to root package.json');
