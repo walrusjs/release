@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.4.0](https://github.com/walrusjs/release/compare/@walrus/release@0.3.0...@walrus/release@0.4.0) (2021-06-23)
+
+
+### Bug Fixes
+
+* **release:** 修复单项目编译报错 ([3bbe159](https://github.com/walrusjs/release/commit/3bbe1591bb09dc5370e113556282c0569b65adb9))
+
+
+### Features
+
+* **release:** 优化单包发布流程 ([052f2c7](https://github.com/walrusjs/release/commit/052f2c7736372830a0cf9ddb14efc967323889f0))
+
+
+
+
+
 # [0.3.0](https://github.com/walrusjs/release/compare/@walrus/release@0.2.0...@walrus/release@0.3.0) (2021-06-18)
 
 

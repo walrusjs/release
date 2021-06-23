@@ -1,6 +1,6 @@
 {
   "name": "@walrus/release-cli",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "main": "./lib/index.js",
   "license": "MIT",
   "bin": {
@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "@walrus/cli-utils": "^1.1.1",
-    "@walrus/release": "0.3.0"
+    "@walrus/release": "0.4.0"
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org",
