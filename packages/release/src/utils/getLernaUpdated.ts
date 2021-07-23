@@ -4,7 +4,7 @@ import { Package } from '@lerna/package';
 import { filterPackages } from '@lerna/filter-packages';
 import { execa } from '@walrus/cli-utils';
 
-const lernaCli = require.resolve('@lerna/cli');
+const lernaCli = require.resolve('lerna/cli');
 
 /**
  * 获取需要更新的包，支持过滤

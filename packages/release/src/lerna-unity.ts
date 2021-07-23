@@ -12,7 +12,7 @@ import {
 } from './utils';
 import type { Options } from './types';
 
-export const lernaCli = require.resolve('@lerna/cli');
+export const lernaCli = require.resolve('lerna/cli');
 
 export async function lernaUnity(
   currentVersion: string,

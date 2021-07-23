@@ -10,7 +10,7 @@ import {
 import { execa, chalk, inquirer } from '@walrus/cli-utils';
 import type { Options } from './types';
 
-export const lernaCli = require.resolve('@lerna/cli');
+export const lernaCli = require.resolve('lerna/cli');
 
 export async function lernaIndependent(
   cwd: string,
