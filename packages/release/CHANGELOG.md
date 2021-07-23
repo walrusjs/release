@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.3](https://github.com/walrusjs/release/compare/@walrus/release@0.4.2...@walrus/release@0.4.3) (2021-07-23)
+
+
+### Bug Fixes
+
+*  Cannot find module 'lerna/cli' ([86fd98c](https://github.com/walrusjs/release/commit/86fd98cb2fb718c5db2aac9a04576ffb6dd19bed))
+* 修复 require.resolve('lerna/cli') 报错 ([dfb542d](https://github.com/walrusjs/release/commit/dfb542dfa319dec6f358229a35839af667d2c980))
+
+
+
+
+
 ## [0.4.2](https://github.com/walrusjs/release/compare/@walrus/release@0.4.1...@walrus/release@0.4.2) (2021-07-23)
 
 
