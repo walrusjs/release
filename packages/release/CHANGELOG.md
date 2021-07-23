@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.2](https://github.com/walrusjs/release/compare/@walrus/release@0.4.1...@walrus/release@0.4.2) (2021-07-23)
+
+
+### Bug Fixes
+
+* replace lerna/cli to @lerna/cli ([17665d6](https://github.com/walrusjs/release/commit/17665d6035f6188a77a3c149c91c59215b8aef30))
+
+
+
+
+
 ## [0.4.1](https://github.com/walrusjs/release/compare/@walrus/release@0.4.0...@walrus/release@0.4.1) (2021-07-23)
 
 **Note:** Version bump only for package @walrus/release
