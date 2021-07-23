@@ -3,7 +3,6 @@
 import { Package } from '@lerna/package';
 import { filterPackages } from '@lerna/filter-packages';
 import { execa } from '@walrus/cli-utils';
-import { printErrorAndExit } from './';
 
 const lernaCli = require.resolve('lerna/cli');
 

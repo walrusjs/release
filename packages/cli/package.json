@@ -13,7 +13,7 @@
     "build": "rimraf lib && tsc -p tsconfig.build.json"
   },
   "dependencies": {
-    "@walrus/cli-utils": "^1.1.1",
+    "@walrus/cli-utils": "1.1.2",
     "@walrus/release": "0.4.0"
   },
   "publishConfig": {
