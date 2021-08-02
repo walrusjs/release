@@ -100,6 +100,5 @@ export function packageExists({ name, version }: { name: string, version: string
 }
 
 export { exec } from './exec';
-export { getPackages } from './getPackages';
 export { getNextVersion } from './getNextVersion';
 export { getLernaUpdated } from './getLernaUpdated';

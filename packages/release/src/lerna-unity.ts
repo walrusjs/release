@@ -1,9 +1,8 @@
-import { execa, chalk } from '@walrus/cli-utils';
 import semver from 'semver';
+import { execa, chalk, getLernaPackages } from '@walrus/cli-utils';
 import {
   exec,
   logStep,
-  getPackages,
   confirmVersion,
   getCommitMessage,
   getNextVersion,
@@ -25,11 +24,7 @@ export async function lernaUnity(
     /** 获取更新的包 */
     logStep('check updated packages');
 
-    updated = getLernaUpdated(
-      opts.scope ?? [],
-      opts.ignore ?? [],
-      !opts.excludePrivate
-    );
+    updated = getLernaUpdated(opts.filterPackages);
 
     if (!updated.length) {
       printErrorAndExit('Release failed, no updated package is updated.');
@@ -81,12 +76,7 @@ export async function lernaUnity(
 
   // Publish
   const pkgs = opts.publishOnly
-    ?
-      getPackages(cwd, {
-        scope: opts.scope,
-        ignore: opts.ignore,
-        showPrivate: !opts.excludePrivate
-      })
+    ? getLernaPackages(cwd, opts.filterPackages)
     : updated;
 
   const names = pkgs.reduce((prev: string, pkg: any) => {

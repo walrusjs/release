@@ -55,13 +55,6 @@ cli
     `[boolean] 仅发布`
   )
   .option(
-    '--exclude-private',
-    `[boolean] 排除私有的包`,
-    {
-      default: true
-    }
-  )
-  .option(
     '--select-version',
     `[boolean] 是否选择版本`,
   )
@@ -75,22 +68,6 @@ cli
     `[string] 将当前更改发布为预发布版本`,
   )
   .example('--conventional-prerelease')
-  .option(
-    '--scope [scope]',
-    `[string] 仅包含与给定 glob 匹配的包。`,
-    {
-      default: []
-    }
-  )
-  .example('--scope @walrus/*')
-  .option(
-    '--ignore [ignore]',
-    `[string] 排除名称与给定 glob 匹配的包。`,
-    {
-      default: []
-    }
-  )
-  .example('--ignore @test/example1 --ignore @test/example2')
   .option(`--tag`, `指定发布Tag`)
   .action((entries: string[], opts: any = {}) => {
     const {
@@ -100,14 +77,6 @@ cli
       cwd: process.cwd(),
       packageKey: 'release'
     });
-
-    if (typeof opts.scope === 'string') {
-      opts.scope = [opts.scope];
-    }
-
-    if (typeof opts.ignore === 'string') {
-      opts.ignore = [opts.ignore];
-    }
 
     release(Object.assign({}, data, opts))
       .catch((err) => {

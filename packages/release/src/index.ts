@@ -1,15 +1,15 @@
 import { PackageJson } from '@pansy/types';
-import { execa, chalk } from '@walrus/cli-utils';
+import { execa, chalk, createDebug } from '@walrus/cli-utils';
 import {
   logStep,
   resolveLerna,
   printErrorAndExit,
   isLernaPackage,
 } from './utils';
-import { Options, Mode } from './types';
 import { singleRelease } from './single';
 import { lernaUnity } from './lerna-unity';
 import { lernaIndependent } from './lerna-independent';
+import type { Options, Mode } from './types';
 
 export async function release(opts: Options, pkg?: PackageJson) {
   logStep('start');

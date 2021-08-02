@@ -3,6 +3,7 @@
 import { Package } from '@lerna/package';
 import { filterPackages } from '@lerna/filter-packages';
 import { execa } from '@walrus/cli-utils';
+import type { FilterPackagesOptions } from '../types';
 
 const lernaCli = require.resolve('lerna/cli');
 
@@ -13,11 +14,11 @@ const lernaCli = require.resolve('lerna/cli');
  * @param showPrivate
  * @returns
  */
-export const getLernaUpdated = (
-  scope: string[],
-  ignore: string[],
-  showPrivate = false
-) => {
+export const getLernaUpdated = ({
+  include = [],
+  exclude = [],
+  showPrivate = false,
+}: FilterPackagesOptions = {}) => {
   let updated = [];
 
   const changedArguments = [
@@ -37,7 +38,7 @@ export const getLernaUpdated = (
     return new Package(pkg, item.location);
   });
 
-  updated = filterPackages(packages, scope, ignore, showPrivate);
+  updated = filterPackages(packages, include, exclude, showPrivate);
 
   return updated;
 };

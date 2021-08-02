@@ -1,3 +1,6 @@
+import type {
+  Options as GetLernaPackagesOpts
+} from '@walrus/cli-utils/lib/getLernaPackages';
 /**
  * lerna.json数据结构
  */
@@ -8,11 +11,7 @@ export interface LernaInfo {
   ignoreChanges?: string[];
 }
 
-export interface FilterPackageOptions {
-  scope?: string[];
-  ignore?: string[];
-  showPrivate?: boolean;
-}
+export interface FilterPackagesOptions extends GetLernaPackagesOpts {}
 
 /**
  * 发布的模式
@@ -39,18 +38,14 @@ export interface Options {
   commitMessage?: string;
   /** 仅发布，lerna模式有效 */
   publishOnly?: boolean;
-  /** 排除私有的包，lerna模式有效 */
-  excludePrivate?: boolean;
   /** 是否选择版本，lerna模式有效 */
   selectVersion?: boolean;
   /** 将预发布版本的软件包升级为稳定版本，lerna模式有效 */
   conventionalGraduate?: string[];
   /** 将当前更改发布为预发布版本，lerna模式有效 */
   conventionalPrerelease?: string[];
-  /** 仅包含与给定 glob 匹配的包 */
-  scope?: string[];
-  /** 排除名称与给定 glob 匹配的包 */
-  ignore?: string[];
+  /** 过滤lerna包 */
+  filterPackages: FilterPackagesOptions;
   /** npm push --tag **** */
   tag?: string;
 }
