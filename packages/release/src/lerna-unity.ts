@@ -58,11 +58,14 @@ export async function lernaUnity(
 
     const versionArgs = [
       'version',
+      nextVersion,
       '--exact',
       '--no-commit-hooks',
       '--no-git-tag-version',
       '--no-push',
     ];
+
+    console.log(versionArgs);
 
     await exec(lernaCli, versionArgs);
 
