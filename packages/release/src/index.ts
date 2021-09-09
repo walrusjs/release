@@ -1,5 +1,5 @@
 import { PackageJson } from '@pansy/types';
-import { execa, chalk, createDebug } from '@walrus/cli-utils';
+import { execa, chalk } from '@walrus/cli-utils';
 import {
   logStep,
   resolveLerna,
@@ -14,16 +14,16 @@ import type { Options, Mode } from './types';
 export async function release(opts: Options, pkg?: PackageJson) {
   logStep('start');
 
-  // 当前的工作目录
+  /** 当前的工作目录 */
   const cwd = opts.cwd ?? process.cwd();
-  // 获取当前工作目录的package.json
+  /** 获取当前工作目录的package.json */
   let pkgInfo: PackageJson = pkg ?? require(`${cwd}/package.json`);
 
-  // 添加默认值
+  /** 添加默认值 */
   opts.buildCommand = opts.buildCommand ?? 'build';
   opts.commitMessage = opts.commitMessage ?? '🔖 chore(release): publish %v';
 
-  // 获取发布模式
+  /** 获取发布模式 */
   let mode: Mode = 'single';
   if (isLernaPackage(cwd)) {
     mode = 'lerna';
