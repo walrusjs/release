@@ -1,8 +1,9 @@
 import semver from 'semver';
-import { execa, chalk, getLernaPackages } from '@walrus/cli-utils';
+import { execa, chalk } from '@walrus/cli-utils';
 import {
   exec,
   logStep,
+  isNextVersion,
   confirmVersion,
   getCommitMessage,
   getNextVersion,
@@ -18,7 +19,8 @@ export async function lernaUnity(
   cwd: string,
   opts: Options
 ) {
-  let updated = null;
+  let updated;
+  let nextVersion = currentVersion;
 
   if (!opts.publishOnly) {
     /** 获取更新的包 */
@@ -39,7 +41,7 @@ export async function lernaUnity(
     }
 
     /** 获取下一个需要发布的版本 */
-    const nextVersion = await getNextVersion(currentVersion);
+    nextVersion = await getNextVersion(currentVersion);
 
     /** 检验版本是否合法 */
     if (!semver.valid(nextVersion)) {
@@ -51,7 +53,7 @@ export async function lernaUnity(
     const result = await confirmVersion(nextVersion);
     if (!result) return;
 
-    // Bump version
+    /** Bump version */
     logStep('bump version with lerna version');
 
     const versionArgs = [
@@ -64,24 +66,46 @@ export async function lernaUnity(
 
     await exec(lernaCli, versionArgs);
 
-    // Commit
+    /** Commit */
     const commitMessage = getCommitMessage(opts.commitMessage as string, nextVersion);
     logStep(`git commit with ${chalk.blue(commitMessage)}`);
     await execa('git', ['commit', '--all', '--message', commitMessage]);
 
-    // Git Tag
+    /** Git Tag */
     logStep(`git tag v${nextVersion}`);
     await execa('git', ['tag', `v${nextVersion}`]);
+
+    /** Push */
+    logStep(`git push`);
+    await exec('git', ['push', 'origin', '--tags']);
   }
 
-  // Publish
-  const pkgs = opts.publishOnly
-    ? getLernaPackages(cwd, opts.filterPackages)
-    : updated;
+  if (!opts.skipPublish) {
+    const names = updated.reduce((prev: string, pkg: any) => {
+      return prev + `${pkg.name}, `;
+    }, '');
 
-  const names = pkgs.reduce((prev: string, pkg: any) => {
-    return prev + `${pkg.name}, `;
-  }, '')
+    logStep(`publish packages: ${chalk.blue(names)}`);
 
-  logStep(`publish packages: ${chalk.blue(names)}`);
+    const isNext = isNextVersion(nextVersion);
+
+    updated.forEach((pkg: any, index: number) => {
+      const { name, version, contents: pkgPath } = pkg;
+
+      if (version === nextVersion) {
+        console.log(
+          `[${index + 1}/${updated.length}] Publish package ${name} ${isNext ? 'with next tag' : ''}`
+        );
+
+        const cliArgs = isNext ? ['publish', '--tag', 'next'] : ['publish'];
+
+        const { stdout } = execa.sync('npm', cliArgs, {
+          cwd: pkgPath
+        });
+        console.log(stdout);
+      }
+    });
+  }
+
+  logStep('done');
 }

@@ -91,7 +91,7 @@ export async function singleRelease(
     await execa('git', ['push']);
   }
 
-  /** 发布到npm */
+  /** npm publish */
   if (!opts.skipPublish) {
     logStep(`npm pulish`);
     const publishOpts = ['publish'];
