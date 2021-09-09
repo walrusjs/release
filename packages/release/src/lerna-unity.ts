@@ -94,10 +94,6 @@ export async function lernaUnity(
 
     const isNext = isNextVersion(nextVersion);
 
-    console.log(pkgs);
-
-    console.log(isNext);
-
     pkgs.forEach((pkg: any, index: number) => {
       const { name, contents: pkgPath } = pkg;
 
