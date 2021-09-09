@@ -1,3 +1,5 @@
 * text eol=lf
 
 *.json linguist-language=JSON-with-Comments
+
+./.yarn/install-state.gz

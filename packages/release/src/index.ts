@@ -78,3 +78,5 @@ export async function release(opts: Options, pkg?: PackageJson) {
 }
 
 export default release;
+
+export { Options as Config } from './types';

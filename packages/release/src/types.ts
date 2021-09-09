@@ -45,7 +45,7 @@ export interface Options {
   /** 将当前更改发布为预发布版本，lerna模式有效 */
   conventionalPrerelease?: string[];
   /** 过滤lerna包 */
-  filterPackages: FilterPackagesOptions;
+  filterPackages?: FilterPackagesOptions;
   /** npm push --tag **** */
   tag?: string;
 }
