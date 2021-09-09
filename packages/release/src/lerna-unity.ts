@@ -1,5 +1,5 @@
 import semver from 'semver';
-import { execa, chalk } from '@walrus/cli-utils';
+import { execa, chalk, getLernaPackages } from '@walrus/cli-utils';
 import {
   exec,
   logStep,
@@ -81,7 +81,11 @@ export async function lernaUnity(
   }
 
   if (!opts.skipPublish) {
-    const names = updated.reduce((prev: string, pkg: any) => {
+    const pkgs = opts.publishOnly
+      ? getLernaPackages(cwd, opts.filterPackages)
+      : updated;
+
+    const names = pkgs.reduce((prev: string, pkg: any) => {
       return prev + `${pkg.name}, `;
     }, '');
 
@@ -89,7 +93,7 @@ export async function lernaUnity(
 
     const isNext = isNextVersion(nextVersion);
 
-    updated.forEach((pkg: any, index: number) => {
+    pkgs.forEach((pkg: any, index: number) => {
       const { name, version, contents: pkgPath } = pkg;
 
       if (version === nextVersion) {

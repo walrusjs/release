@@ -81,58 +81,50 @@ export async function lernaIndependent(
     );
   }
 
-  // Publish
-  const pkgs = opts.publishOnly
-    ? getLernaPackages(cwd, opts.filterPackages)
-    : updated;
+  if (!opts.skipPublish) {
+    // Publish
+    const pkgs = opts.publishOnly
+      ? getLernaPackages(cwd, opts.filterPackages)
+      : updated;
 
-  const names = pkgs.reduce((prev: string, pkg: any) => {
-    return prev + `${pkg.name}, `;
-  }, '')
+    const names = pkgs.reduce((prev: string, pkg: any) => {
+      return prev + `${pkg.name}, `;
+    }, '')
 
-  logStep(`publish packages: ${chalk.blue(names)}`);
+    logStep(`publish packages: ${chalk.blue(names)}`);
 
-  // 获取 opt 的输入
-  // const { otp } = await inquirer.prompt([
-  //   {
-  //     type: 'input',
-  //     name: 'otp',
-  //     message: '请输入 otp 的值，留空表示不使用 otp',
-  //   },
-  // ]);
+    /** 发布包 */
+    pkgs.forEach((pkg: any, index: number) => {
+      const pkgPath = pkg.contents;
+      const { name, version } = pkg;
+      const isNext = isNextVersion(version);
 
-  // process.env.NPM_CONFIG_OTP = otp;
+      let isPackageExist = null;
 
-  pkgs.forEach((pkg: any, index: number) => {
-    const pkgPath = pkg.contents;
-    const { name, version } = pkg;
-    const isNext = isNextVersion(version);
+      if (opts.publishOnly) {
+        isPackageExist = packageExists({ name, version });
 
-    let isPackageExist = null;
-
-    if (opts.publishOnly) {
-      isPackageExist = packageExists({ name, version });
-
-      if (isPackageExist) {
-        console.log(
-          `package ${name}@${version} is already exists on npm, skip.`,
-        );
+        if (isPackageExist) {
+          console.log(
+            `package ${name}@${version} is already exists on npm, skip.`,
+          );
+        }
       }
-    }
 
-    if (!opts.publishOnly || !isPackageExist) {
-      console.log(
-        `[${index + 1}/${pkgs.length}] Publish package ${name} ${
-          isNext ? 'with next tag' : ''
-        }`,
-      );
-      const cliArgs = isNext ? ['publish', '--tag', 'next'] : ['publish'];
-      const { stdout } = execa.sync('npm', cliArgs, {
-        cwd: pkgPath,
-      });
-      console.log(stdout);
-    }
-  });
+      if (!opts.publishOnly || !isPackageExist) {
+        console.log(
+          `[${index + 1}/${pkgs.length}] Publish package ${name} ${
+            isNext ? 'with next tag' : ''
+          }`,
+        );
+        const cliArgs = isNext ? ['publish', '--tag', 'next'] : ['publish'];
+        const { stdout } = execa.sync('npm', cliArgs, {
+          cwd: pkgPath,
+        });
+        console.log(stdout);
+      }
+    });
+  }
 
   logStep('done');
 }
