@@ -26,14 +26,14 @@ export interface Options {
   cwd?: string;
   /** 是否跳过 Git 状态检查 */
   skipGitStatusCheck?: boolean;
+  /** 指定编译命令 */
+  buildCommand?: string;
   /** 是否跳过编译 */
   skipBuild?: boolean;
   /** 是否跳过发布 */
   skipPublish?: boolean;
   /** 是否跳过同步到淘宝源 */
   skipSync?: boolean;
-  /** 指定编译命令 */
-  buildCommand?: string;
   /** 指定提交的信息 */
   commitMessage?: string;
   /** 仅发布，lerna模式有效 */
