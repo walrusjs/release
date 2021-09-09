@@ -95,20 +95,19 @@ export async function lernaUnity(
     const isNext = isNextVersion(nextVersion);
 
     pkgs.forEach((pkg: any, index: number) => {
-      const { name, version, contents: pkgPath } = pkg;
+      const { name, contents: pkgPath } = pkg;
 
-      if (version === nextVersion) {
-        console.log(
-          `[${index + 1}/${updated.length}] Publish package ${name} ${isNext ? 'with next tag' : ''}`
-        );
+      console.log(
+        `[${index + 1}/${updated.length}] Publish package ${name} ${isNext ? 'with next tag' : ''}`
+      );
 
-        const cliArgs = isNext ? ['publish', '--tag', 'next'] : ['publish'];
+      const cliArgs = isNext ? ['publish', '--tag', 'next'] : ['publish'];
 
-        const { stdout } = execa.sync('npm', cliArgs, {
-          cwd: pkgPath
-        });
-        console.log(stdout);
-      }
+      const { stdout } = execa.sync('npm', cliArgs, {
+        cwd: pkgPath
+      });
+
+      console.log(stdout);
     });
 
     await execa('git', ['push']);
