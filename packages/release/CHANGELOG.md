@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.5.0](https://github.com/walrusjs/release/compare/@walrus/release@0.4.3...@walrus/release@0.5.0) (2021-09-09)
+
+
+### Bug Fixes
+
+* 修复配置文件配置配置无法覆盖命令行配置 ([338e18d](https://github.com/walrusjs/release/commit/338e18d3f5ff22897bd3d7f9f3cc51b1f27cf52e))
+
+
+### Features
+
+* 优化过滤多包逻辑 ([6ba91ab](https://github.com/walrusjs/release/commit/6ba91abcaacdcb92dd5b6b749a0c3bae2b5396d1))
+
+
+
+
+
 ## [0.4.3](https://github.com/walrusjs/release/compare/@walrus/release@0.4.2...@walrus/release@0.4.3) (2021-07-23)
 
 
