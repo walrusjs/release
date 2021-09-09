@@ -65,8 +65,6 @@ export async function lernaUnity(
       '--no-push',
     ];
 
-    console.log(versionArgs);
-
     await exec(lernaCli, versionArgs);
 
     /** Commit */
@@ -112,6 +110,8 @@ export async function lernaUnity(
         console.log(stdout);
       }
     });
+
+    await execa('git', ['push']);
   }
 
   logStep('done');
