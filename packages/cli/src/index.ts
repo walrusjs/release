@@ -33,13 +33,6 @@ cli
     }
   )
   .option(
-    '--skip-sync',
-    `[boolean] 是否跳过同步到淘宝源`,
-    {
-      default: false
-    }
-  )
-  .option(
     '--build-command [buildCommand]',
     `[string] 指定编译命令`,
     {
