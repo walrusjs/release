@@ -1,6 +1,6 @@
 {
   "name": "@walrus/release-cli",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "./lib/index.js",
   "license": "MIT",
   "bin": {
@@ -13,7 +13,7 @@
     "build": "rimraf lib && tsc -p tsconfig.build.json"
   },
   "dependencies": {
-    "@walrus/release": "1.0.0"
+    "@walrus/release": "1.0.1"
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org",
