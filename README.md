@@ -6,6 +6,18 @@
   发布版本的小工具
 </h2>
 
+<p align="center">
+  <a href="https://github.com/walrusjs/release/network">
+    <img src="https://img.shields.io/github/forks/walrusjs/release.svg" alt="Forks">
+  </a>
+  <a href="https://github.com/walrusjs/release/stargazers">
+    <img src="https://img.shields.io/github/stars/walrusjs/release.svg" alt="Stars">
+  </a>
+  <a href="https://www.npmjs.com/package/@walrus/release-cli">
+    <img src="https://img.shields.io/npm/v/@walrus/release-cli.svg" alt="npm version">
+  </a>
+</p>
+
 支持三种发布形式
 
 - 单项目
