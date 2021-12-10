@@ -33,6 +33,13 @@ cli
     }
   )
   .option(
+    '--skip-npm-registry-check',
+    `[boolean] 是否跳过检查 npm registry 地址`,
+    {
+      default: false
+    }
+  )
+  .option(
     '--build-command [buildCommand]',
     `[string] 指定编译命令`,
     {

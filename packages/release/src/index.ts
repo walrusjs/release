@@ -41,7 +41,7 @@ export async function release(opts: Options, pkg?: PackageJson) {
   }
 
   /** 检查 npm registry 地址 */
-  if (!opts.skipPublish) {
+  if (!opts.skipPublish && !opts.skipNpmRegistryCheck) {
     logStep('check npm registry');
     const userRegistry = execa.sync('npm', ['config', 'get', 'registry']).stdout;
     if (userRegistry.includes('https://registry.yarnpkg.com/')) {

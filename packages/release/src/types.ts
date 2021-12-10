@@ -32,6 +32,8 @@ export interface Options {
   skipBuild?: boolean;
   /** 是否跳过发布 */
   skipPublish?: boolean;
+  /** 是否跳过 npm 仓库检查 */
+  skipNpmRegistryCheck?: boolean;
   /** 指定提交的信息 */
   commitMessage?: string;
   /** 仅发布，lerna模式有效 */
