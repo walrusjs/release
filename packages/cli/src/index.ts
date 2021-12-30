@@ -68,7 +68,7 @@ cli
     `[string] 将当前更改发布为预发布版本`,
   )
   .example('--conventional-prerelease')
-  .option(`--tag`, `指定发布Tag`)
+  .option(`--tag [tag]`, `指定发布Tag`)
   .action(async (entries: string[], opts = {}) => {
     const {
       data = {}
