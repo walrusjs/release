@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-import { cac, joycon, mergeConfig } from '@walrus/cli-utils';
+import { cac, loadConfig, mergeConfig } from '@walrus/cli-utils';
 import { DEFAULT_CONFIG_FILES } from './config';
 import { release } from '@walrus/release';
 
@@ -69,14 +69,10 @@ cli
   )
   .example('--conventional-prerelease')
   .option(`--tag`, `指定发布Tag`)
-  .action((entries: string[], opts = {}) => {
+  .action(async (entries: string[], opts = {}) => {
     const {
       data = {}
-    } = joycon.loadSync({
-      files: DEFAULT_CONFIG_FILES,
-      cwd: process.cwd(),
-      packageKey: 'release'
-    });
+    } = await loadConfig(process.cwd(), DEFAULT_CONFIG_FILES);
 
     release(mergeConfig({}, opts, data))
       .catch((err: any) => {

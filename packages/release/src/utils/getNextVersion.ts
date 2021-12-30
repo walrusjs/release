@@ -1,4 +1,4 @@
-import semver, { ReleaseType } from 'semver';
+import { semver } from '@walrus/cli-utils';
 import inquirer from 'inquirer';
 
 export const bumps = ['patch', 'minor', 'major', 'prerelease'];
@@ -8,7 +8,7 @@ export const nexts = ['rc', 'beta', 'alpha'];
 export async function getNextVersion(currentVersion: string) {
   const versions: Record<string, string> = {};
   bumps.forEach((bump) => {
-    versions[bump] = semver.inc(currentVersion, bump as ReleaseType) as string;
+    versions[bump] = semver.inc(currentVersion, bump as any) as string;
   });
 
   nexts.forEach((next) => {

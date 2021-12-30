@@ -1,6 +1,6 @@
 import type {
   Options as GetLernaPackagesOpts
-} from '@walrus/cli-utils/lib/getLernaPackages';
+} from '@walrus/cli-utils/dist/getPackages';
 /**
  * lerna.json数据结构
  */

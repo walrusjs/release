@@ -1,4 +1,4 @@
-import { execa, chalk, getLernaPackages } from '@walrus/cli-utils';
+import { execa, chalk, getPackages } from '@walrus/cli-utils';
 import {
   exec,
   logStep,
@@ -84,7 +84,7 @@ export async function lernaIndependent(
   if (!opts.skipPublish) {
     // Publish
     const pkgs = opts.publishOnly
-      ? getLernaPackages(cwd, opts.filterPackages)
+      ? getPackages(cwd, opts.filterPackages)
       : updated;
 
     const names = pkgs.reduce((prev: string, pkg: any) => {

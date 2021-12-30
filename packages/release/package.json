@@ -17,9 +17,8 @@
     "@lerna/package": "4.0.0",
     "@lerna/project": "4.0.0",
     "@pansy/types": "0.2.0",
-    "@walrus/cli-utils": "1.5.0",
-    "lerna": "4.0.0",
-    "semver": "7.3.5"
+    "@walrus/cli-utils": "2.0.5",
+    "lerna": "4.0.0"
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org",

@@ -1,7 +1,6 @@
 import { join } from 'path';
 import { writeFileSync } from 'fs';
-import semver from 'semver';
-import { execa, chalk } from '@walrus/cli-utils';
+import { execa, chalk, semver } from '@walrus/cli-utils';
 import { PackageJson } from '@pansy/types';
 import { Options } from './types';
 import {
