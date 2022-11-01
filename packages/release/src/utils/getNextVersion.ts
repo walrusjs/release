@@ -1,5 +1,4 @@
-import { semver } from '@walrus/cli-utils';
-import inquirer from 'inquirer';
+import { semver, inquirer } from '@walrus/cli-utils';
 
 export const bumps = ['patch', 'minor', 'major', 'prerelease'];
 
