@@ -1,7 +1,5 @@
 import { Config } from './packages/release/src';
 
-const config: Config = {
-
-};
+const config: Config = {};
 
 export default config;
