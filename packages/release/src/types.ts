@@ -26,6 +26,8 @@ export interface Options {
   cwd?: string;
   /** 是否跳过 Git 状态检查 */
   skipGitStatusCheck?: boolean;
+  /** 是否跳过 Git远程更新 检查 */
+  skipGitRemoteUpdateCheck?: boolean;
   /** 指定编译命令 */
   buildCommand?: string;
   /** 是否跳过编译 */

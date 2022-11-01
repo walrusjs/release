@@ -40,6 +40,17 @@ export async function release(opts: Options, pkg?: PackageJson) {
     logStep('git status check is skipped, since --skip-git-status-check is supplied');
   }
 
+  /** check git remote update */
+  if (!opts.skipGitRemoteUpdateCheck) {
+    logStep('check git remote update');
+    const gitStatus = execa.sync('git', ['status', '--short', '--branch']).stdout;
+    if (gitStatus.length) {
+      printErrorAndExit(`Your git status is behind remote. Aborting.`);
+    }
+  } else {
+    logStep('git status check is skipped, since --skip-git-remote-update-check is supplied');
+  }
+
   /** 检查 npm registry 地址 */
   if (!opts.skipPublish && !opts.skipNpmRegistryCheck) {
     logStep('check npm registry');
