@@ -10,7 +10,7 @@
     "lib"
   ],
   "scripts": {
-    "build": "rimraf lib && tsc -p tsconfig.build.json"
+    "build": "redbud build"
   },
   "dependencies": {
     "@walrus/release": "1.2.0"
