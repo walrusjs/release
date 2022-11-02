@@ -44,7 +44,6 @@ export async function release(opts: Options, pkg?: PackageJson) {
   if (!opts.skipGitRemoteUpdateCheck) {
     logStep('check git remote update');
     const gitStatus = execa.sync('git', ['status', '--short', '--branch']).stdout.trim();
-    console.log(execa.sync('git', ['status', '--short', '--branch']));
     if (gitStatus.includes('behind')) {
       printErrorAndExit(`Your git status is behind remote. Aborting.`);
     }
