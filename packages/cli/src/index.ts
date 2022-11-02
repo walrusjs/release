@@ -3,7 +3,7 @@ import { cac, loadConfig, mergeConfig } from '@walrus/cli-utils';
 import { DEFAULT_CONFIG_FILES } from './config';
 import { release } from '@walrus/release';
 
-const cli = cac(`commit`);
+const cli = cac.cac(`commit`);
 
 cli
   .command('[...entries]')

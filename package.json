@@ -7,7 +7,7 @@
   "scripts": {
     "build": "pnpm run -r build",
     "commit": "commit",
-    "release": "node ./packages/cli/lib/index.js"
+    "release": "redbud run ./packages/cli/src/index.ts"
   },
   "devDependencies": {
     "@walrus/cli-utils": "2.2.1",
