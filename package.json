@@ -5,6 +5,7 @@
   "author": "wangxingkang <wang_xingkang@qq.com>",
   "license": "MIT",
   "scripts": {
+    "build": "pnpm run -r build",
     "commit": "commit",
     "release": "node ./packages/cli/lib/index.js"
   },
