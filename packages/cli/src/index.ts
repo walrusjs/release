@@ -19,6 +19,13 @@ cli
     }
   )
   .option(
+    '--skip-git-remote-update-check',
+    `[boolean] 是否跳过 git 远程更新检查`,
+    {
+      default: false
+    }
+  )
+  .option(
     '--skip-build',
     `[boolean] 是否跳过项目编译`,
     {

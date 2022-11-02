@@ -32,8 +32,8 @@ export async function release(opts: Options, pkg?: PackageJson) {
   /** 检查Git状态，是否存在未提交的文件 */
   if (!opts.skipGitStatusCheck) {
     logStep('check git status');
-    const gitStatus = execa.sync('git', ['status', '--porcelain']).stdout;
-    if (gitStatus.length) {
+    const gitStatus = execa.sync('git', ['status', '--porcelain']).stdout.trim().length;
+    if (gitStatus) {
       printErrorAndExit(`Your git status is not clean. Aborting.`);
     }
   } else {
@@ -43,12 +43,13 @@ export async function release(opts: Options, pkg?: PackageJson) {
   /** check git remote update */
   if (!opts.skipGitRemoteUpdateCheck) {
     logStep('check git remote update');
-    const gitStatus = execa.sync('git', ['status', '--short', '--branch']).stdout;
-    if (gitStatus.length) {
+    const gitStatus = execa.sync('git', ['status', '--short', '--branch']).stdout.trim();
+    console.log(execa.sync('git', ['status', '--short', '--branch']));
+    if (gitStatus.includes('behind')) {
       printErrorAndExit(`Your git status is behind remote. Aborting.`);
     }
   } else {
-    logStep('git status check is skipped, since --skip-git-remote-update-check is supplied');
+    logStep('git remote update is skipped, since --skip-git-remote-update-check is supplied');
   }
 
   /** 检查 npm registry 地址 */
